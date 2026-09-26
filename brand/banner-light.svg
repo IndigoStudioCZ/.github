@@ -1,12 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360">
   <defs>
     <clipPath id="card"><rect width="1280" height="360" rx="24"/></clipPath>
-    
-  <linearGradient id="mark" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#6366f1"/>
-    <stop offset="1" stop-color="#818cf8"/>
-  </linearGradient>
-    <radialGradient id="glow" cx="140" cy="128" r="460" gradientUnits="userSpaceOnUse">
+    <radialGradient id="glow" cx="220" cy="150" r="460" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#6366f1" stop-opacity="0"/>
       <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
     </radialGradient>
@@ -95,15 +90,8 @@
   </g>
   <rect x="0.5" y="0.5" width="1279" height="359" rx="23.5" fill="none" stroke="#101220" stroke-opacity="0.09"/>
 
-  <g transform="translate(96 86) scale(1.3125)">
-    <rect width="64" height="64" rx="16" fill="url(#mark)"/>
-    
-  <path d="M26 18h6v28h-6z" fill="#fff" fill-opacity="0.95"/>
-  <circle cx="40" cy="22" r="4" fill="#fff" fill-opacity="0.95"/>
-  </g>
+  <text x="96" y="142" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="70" font-weight="700" letter-spacing="-1.5" fill="#14151b">Indigo<tspan dx="19" fill="#4f46e5">Studio</tspan><tspan dx="17" font-size="51" font-weight="500" letter-spacing="-1" fill="#8b8c98">s. r. o.</tspan></text>
 
-  <text x="206" y="150" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="-1.5" fill="#14151b">Indigo<tspan dx="18" fill="#4f46e5">Studio</tspan><tspan dx="16" font-size="48" font-weight="500" letter-spacing="-1" fill="#8b8c98">s. r. o.</tspan></text>
-
-  <text x="96" y="246" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" fill="#555766"><tspan fill="#14151b" font-weight="600">Custom software:</tspan> from internal tools</text>
-  <text x="96" y="288" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" fill="#555766">to public products</text>
+  <text x="96" y="238" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" fill="#555766"><tspan fill="#14151b" font-weight="600">Custom software:</tspan> from internal tools</text>
+  <text x="96" y="280" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" fill="#555766">to public products</text>
 </svg>

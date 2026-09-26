@@ -123,22 +123,14 @@ function doodle([name, cx, cy, w, rot], k) {
   return `<g transform="rotate(${rot} ${cx} ${cy})"><svg x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" viewBox="0 0 ${vw} ${vh}">${strokes}</svg></g>`;
 }
 
-// Logo z favicon.svg (64×64), bez vlastního pozadí se hodí do banneru i avataru
-const MARK = `
-  <path d="M26 18h6v28h-6z" fill="#fff" fill-opacity="0.95"/>
-  <circle cx="40" cy="22" r="4" fill="#fff" fill-opacity="0.95"/>`;
-const MARK_GRADIENT = (id) => `
-  <linearGradient id="${id}" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#6366f1"/>
-    <stop offset="1" stop-color="#818cf8"/>
-  </linearGradient>`;
+// Logo studia je text „Indigo Studio s. r. o." jako v hlavičce webu a na og.png — žádná ikona.
+// (Indigová „i" z favicon.svg je jen ikona záložky, ne logo.)
 
 function banner(t) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
   <defs>
     <clipPath id="card"><rect width="${W}" height="${H}" rx="24"/></clipPath>
-    ${MARK_GRADIENT("mark")}
-    <radialGradient id="glow" cx="140" cy="128" r="460" gradientUnits="userSpaceOnUse">
+    <radialGradient id="glow" cx="220" cy="150" r="460" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#6366f1" stop-opacity="${t.glow}"/>
       <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
     </radialGradient>
@@ -161,26 +153,26 @@ function banner(t) {
   </g>
   <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="23.5" fill="none" stroke="${t.border}" stroke-opacity="${t.borderOpacity}"/>
 
-  <g transform="translate(96 86) scale(1.3125)">
-    <rect width="64" height="64" rx="16" fill="url(#mark)"/>
-    ${MARK}
-  </g>
+  <text x="96" y="142" font-family="${FONT}" font-size="70" font-weight="700" letter-spacing="-1.5" fill="${t.fg}">Indigo<tspan dx="19" fill="${t.accent}">Studio</tspan><tspan dx="17" font-size="51" font-weight="500" letter-spacing="-1" fill="${t.faint}">s. r. o.</tspan></text>
 
-  <text x="206" y="150" font-family="${FONT}" font-size="66" font-weight="700" letter-spacing="-1.5" fill="${t.fg}">Indigo<tspan dx="18" fill="${t.accent}">Studio</tspan><tspan dx="16" font-size="48" font-weight="500" letter-spacing="-1" fill="${t.faint}">s. r. o.</tspan></text>
-
-  <text x="96" y="246" font-family="${FONT}" font-size="32" fill="${t.muted}"><tspan fill="${t.fg}" font-weight="600">Custom software:</tspan> from internal tools</text>
-  <text x="96" y="288" font-family="${FONT}" font-size="32" fill="${t.muted}">to public products</text>
+  <text x="96" y="238" font-family="${FONT}" font-size="32" fill="${t.muted}"><tspan fill="${t.fg}" font-weight="600">Custom software:</tspan> from internal tools</text>
+  <text x="96" y="280" font-family="${FONT}" font-size="32" fill="${t.muted}">to public products</text>
 </svg>
 `;
 }
 
-// Avatar organizace: logo přes celou plochu, zaoblení dodá GitHub sám
-const AVATAR = `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 64 64">
-  <defs>${MARK_GRADIENT("mark")}</defs>
-  <rect width="64" height="64" fill="url(#mark)"/>
-  ${MARK}
+// Avatar organizace: logo pod sebou na tmavém pozadí webu, zaoblení rohů dodá GitHub sám
+function avatar(t) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="${t.bg}"/>
+  <g font-family="${FONT}" font-weight="700" letter-spacing="-6">
+    <text x="178" y="386" font-size="230" fill="${t.fg}">Indigo</text>
+    <text x="178" y="632" font-size="230" fill="${t.accent}">Studio</text>
+    <text x="184" y="800" font-size="150" font-weight="500" letter-spacing="-3" fill="${t.faint}">s. r. o.</text>
+  </g>
 </svg>
 `;
+}
 
 function render(svgPath, pngPath, args) {
   execFileSync("rsvg-convert", [...args, "-o", pngPath, svgPath]);
@@ -194,5 +186,5 @@ for (const [name, theme] of Object.entries(THEMES)) {
   render(svg, out(`../profile/banner-${name}.png`), ["-z", "2"]);
 }
 
-writeFileSync(out("avatar.svg"), AVATAR);
+writeFileSync(out("avatar.svg"), avatar(THEMES.dark));
 render(out("avatar.svg"), out("avatar.png"), ["-w", "1024", "-h", "1024"]);

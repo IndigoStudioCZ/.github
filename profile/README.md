@@ -1,7 +1,10 @@
+<!-- Obrázky přes absolutní URL: mobilní aplikace GitHubu relativní cesty nenačte.
+     Výchozí je tmavý banner (výchozí vzhled webu), světlý jen pro světlý motiv. -->
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="banner-dark.png">
-    <img src="banner-light.png" alt="Indigo Studio. Custom software: from internal tools to public products.">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/IndigoStudioCZ/.github/main/profile/banner-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/IndigoStudioCZ/.github/main/profile/banner-light.png">
+    <img src="https://raw.githubusercontent.com/IndigoStudioCZ/.github/main/profile/banner-dark.png" alt="Indigo Studio s. r. o. Custom software: from internal tools to public products.">
   </picture>
 </p>
 
